@@ -6,7 +6,7 @@ $purl = "";
 
 function javascript() {
     global $host, $url;
-    preg_match("/(https?:\/\/|^)(\w+\.\w+)($|\/)/", $url, $m);
+    preg_match("/(https?:\/\/|^)((\w+\.)+\w+(:\d+)?)($|\/)/", $url, $m);
     $base = $m[2];
 ?>
 <script type="text/javascript">
