@@ -25,7 +25,7 @@ function javascript() {
 
 if (isset($_GET["url"])) {
     $url = $_GET['url'];
-    $purl = $proxy . urldecode($url);
+    $purl = $proxy . $url;
     if ($_COOKIE["htmlview"] == "true") $purl .= "&strip=1";
 
     if (isset($_GET["view"])) {
@@ -62,8 +62,11 @@ if (isset($_GET["url"])) {
           $ch = ""; 
           if ($_COOKIE["htmlview"] == "true") $ch = " checked"; 
 ?>
-        <em> Resource &quot;<?=$url?>&quot; is banned. </em>
+        <em> Resource &quot;<?=htmlentities($url)?>&quot; is banned. </em>
         <hr>
+
+<?php $url = str_replace("\"", "&quot;", $url); ?>
+<?php $purl = str_replace("\"", "&quot;", $purl); ?>
 
         [<a href="<?=$purl?>">open</a>]
         [<a href="?view=1&amp;url=<?=$url?>">view here</a><sup><a href="#star">*</a></sup>]     
